@@ -1,0 +1,1 @@
+export const BASE_URL="https://link-up-backend-orpin.vercel.app"
