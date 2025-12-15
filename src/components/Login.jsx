@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
@@ -9,6 +9,8 @@ const Login = () => {
   const[password,setPassword]=useState("");
   const dispatch=useDispatch();
   const navigate=useNavigate();
+  const user=useSelector(store=>store.user);
+  if(user) return navigate("/");
   const handleTestCredential=()=>{
     setEmailId("ajinkya@gmail.com");
     setPassword("ajinkya741");
@@ -18,6 +20,7 @@ const Login = () => {
     const res=await axios.post(`${BASE_URL}/login`,{email:emailId,password},{withCredentials:true});
     console.log(res);
     dispatch(addUser(res.data.user));
+    localStorage.setItem('token',res.data.token);
     navigate("/")
   }
   return (
