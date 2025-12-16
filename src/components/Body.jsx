@@ -29,7 +29,7 @@ const Body = () => {
     if(!user) fetchUser();
   },[])
   return (
-    <div>
+    <div className='bg-base-300'>
         <Navbar/>
         <Outlet/>
         <Footer/>

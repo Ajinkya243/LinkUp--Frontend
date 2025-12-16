@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { removeUser } from "../utils/userSlice";
+import { removeFeed } from "../utils/feedSlice";
 
 const Navbar=()=>{
   const user=useSelector(state=>state.user);
@@ -9,6 +10,7 @@ const Navbar=()=>{
   const handleLogout=()=>{
     localStorage.removeItem('token');
     dispatch(removeUser());
+    dispatch(removeFeed());
     navigate("/login");
   }
 return <div className="navbar bg-base-300 shadow-2xl">
