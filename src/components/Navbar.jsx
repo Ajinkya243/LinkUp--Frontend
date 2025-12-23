@@ -39,6 +39,7 @@ return <div className="navbar bg-base-300 shadow-2xl">
           </Link>
         </li>
         <li><Link to="/connections">Connections</Link></li>
+        <li><Link to="/request">Requests</Link></li>
         <li><a onClick={handleLogout}>Logout</a></li>
       </ul>
     </div>
