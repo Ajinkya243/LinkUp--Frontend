@@ -32,7 +32,6 @@ const Request = () => {
         const fetchRequest=async()=>{
             try{
                 const res=await axios.get(`${BASE_URL}/user/requests/received`,{headers:{'Authorization':localStorage.getItem('token')}});
-                console.log(res);
                 dispatch(addRequest(res.data.connectionRequest));
             }
             catch(err){

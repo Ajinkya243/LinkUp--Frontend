@@ -14,6 +14,7 @@ const Feed = () => {
     async function getFeed(){
       if(feed) return
       const token=localStorage.getItem('token');
+      if(!token) return;
       try{
         const res=await axios.get(`${BASE_URL}/feed`,{headers:{
         'Authorization':token
@@ -21,11 +22,14 @@ const Feed = () => {
       dispatch(addFeed(res.data));
       }
       catch(err){
-        setError(err)
+        setError(err);
       }
     }
     getFeed();
-  },[dispatch]);
+  },[]);
+
+  if(!feed) return;
+  if(!feed.length) return <h2 className='flex justify-center my-10'>No new users found!</h2>
   return (
     <div className='flex justify-center min-h-screen py-20'>
       {error && <p>{error}</p>}
