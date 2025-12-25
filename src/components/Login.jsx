@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
+import Navbar from './Navbar';
+import Footer from './Footer';
 const Login = () => {
   const[emailId,setEmailId]=useState("");
   const[password,setPassword]=useState("");
@@ -35,6 +37,8 @@ const Login = () => {
     }
   },[user])
   return (
+    <>
+    <Navbar/>
     <div className='flex justify-center my-10'>
     <div className="card card-border bg-base-300 w-96">
   <div className="card-body">
@@ -59,6 +63,8 @@ const Login = () => {
   </div>
 </div>
 </div>
+<Footer/>
+</>
   )
 }
 
